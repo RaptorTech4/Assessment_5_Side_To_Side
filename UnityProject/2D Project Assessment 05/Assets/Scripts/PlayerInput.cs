@@ -1,30 +1,40 @@
 using UnityEngine;
 
-
 [RequireComponent(typeof(PlayerController))]
 public class PlayerInput : MonoBehaviour
 {
     [HideInInspector]
     public PlayerController _PC;
 
-    public string _MovementInputName = "Horizontal";
-    public string _JumpInputName = "Jump";
-
-    float _Movement;
 
     private void Start()
     {
+        
         _PC = GetComponent<PlayerController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _Movement = Input.GetAxisRaw(_MovementInputName);
-        _PC.Move(_Movement);
+        float MI = Input.GetAxis("Movement");
+        Move(MI);
 
-        if (Input.GetButtonDown(_JumpInputName))
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        if (_PC._ExtraJumps > 0)
         {
             _PC.Jump();
+            Debug.Log("Jump");
         }
+    }
+
+    void Move(float _Movement)
+    {
+        _PC.Move(_Movement);
     }
 }
