@@ -18,13 +18,13 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         float MI = Input.GetAxis("Movement");
-        Move(MI);
-
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            Jump();
             Debug.Log("Jump");
+            Jump();
         }
+
+        Move(MI);
     }
 
     void Jump()
@@ -32,7 +32,6 @@ public class PlayerInput : MonoBehaviour
         if (_PC._ExtraJumps > 0)
         {
             _PC.Jump();
-            Debug.Log("Jump");
         }
     }
 
