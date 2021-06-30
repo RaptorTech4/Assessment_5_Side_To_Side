@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+            Debug.Log("Jump");
         }
     }
 
