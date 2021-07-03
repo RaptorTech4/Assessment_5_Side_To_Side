@@ -33,19 +33,12 @@ public class PatrolAI : MonoBehaviour
 
     public void RemoveHealth(float healthSubtract)
     {
-        if(_Health > 0f)
-        {
-            _Health = _Health - healthSubtract;
-        }
+        _Health = _Health - healthSubtract;
 
-
-    }
-    
-    void HealthCheack()
-    {
-        if(_Health<=0f)
+        if(_Health <= 0f)
         {
             Destroy(gameObject);
         }
     }
+    
 }

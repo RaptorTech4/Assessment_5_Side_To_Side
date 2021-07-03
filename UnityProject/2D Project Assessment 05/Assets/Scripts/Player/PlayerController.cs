@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,11 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _RB;
     private Collider2D _Col;
     //Movement
-    [SerializeField]private float _Speed;
+    [SerializeField] private float _Speed;
     private bool _FacingRight;
     //jump
-    [SerializeField]private float _JumpForce;
-    [SerializeField]private LayerMask _GroundLayer;
+    [SerializeField] private float _JumpForce;
+    [SerializeField] private LayerMask _GroundLayer;
     //[HideInInspector]
     public int _ExtraJumps;
     public int _ExtraJumpsValue;
@@ -46,25 +43,36 @@ public class PlayerController : MonoBehaviour
         //movement
         float movement = _PlayerInput.Player.Movement.ReadValue<float>();
 
+        if (_FacingRight == true && movement < 0)
+        {
+            Flip();
+        }
+        else if (_FacingRight == false && movement > 0)
+        {
+            Flip();
+        }
+
         Vector3 currentPosition = transform.position;
         currentPosition.x += movement * _Speed * Time.deltaTime;
         transform.position = currentPosition;
 
-        
+        if (_IsGrounded())
+        {
+            _ExtraJumps = _ExtraJumpsValue;
+        }
     }
 
     void JumpPlayer()
     {
-        if(_IsGrounded())
-        {
-            _ExtraJumps = _ExtraJumpsValue;
-        }
 
-        if(_ExtraJumps>0)
+
+        if (_ExtraJumps > 0)
         {
-            _RB.AddForce(new Vector2(0,_JumpForce),ForceMode2D.Impulse);
+            _RB.AddForce(new Vector2(0, _JumpForce), ForceMode2D.Impulse);
+
             _ExtraJumps--;
         }
+
 
     }
 
@@ -80,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        return Physics2D.OverlapArea(topLeftPoint,bottomRightPoint,_GroundLayer);
+        return Physics2D.OverlapArea(topLeftPoint, bottomRightPoint, _GroundLayer);
     }
 
     void Flip()
