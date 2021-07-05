@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -685407276569251736
     second: ExtraAssets_5
+  - first:
+      213: 2142230984429869148
+    second: ExtraAssets_6
+  - first:
+      213: -7574795116470854732
+    second: ExtraAssets_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,10 +154,10 @@ TextureImporter:
       name: ExtraAssets_0
       rect:
         serializedVersion: 2
-        x: 32
+        x: 13
         y: 172
-        width: 64
-        height: 96
+        width: 102
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

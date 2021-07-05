@@ -134,6 +134,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7ccb597b-1b33-4a22-9473-f43895f9ad71"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bacd9c85-0fd4-4236-b320-28ec4d6d6af7"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
