@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8790174740143227979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.753, y: -0.447, z: 0}
+  m_LocalPosition: {x: 0.428, y: -0.269, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8790174741650039666}
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8790174741650039679}
   - component: {fileID: 8790174741650039664}
   - component: {fileID: 8790174741650039665}
+  - component: {fileID: 2940788361415705533}
   m_Layer: 0
   m_Name: PatrolAI
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 8790174741650039667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 71.21, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 8790174740143227978}
   m_Father: {fileID: 0}
@@ -101,10 +102,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 27080773
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6602463a0fd11de4a905268e69bfd4a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,9 +129,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0006580353, y: -0.04355967}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.1875, y: 0.1875, z: 0.1875, w: 0.28125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
@@ -139,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.62908554, y: 0.53800464}
   m_EdgeRadius: 0
 --- !u!114 &8790174741650039665
 MonoBehaviour:
@@ -155,3 +156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 2
   _GroundDetection: {fileID: 8790174740143227978}
+--- !u!114 &2940788361415705533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790174741650039667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0645f3501ef704d9e99c26846ab821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _InstendDeath: 0
+  _GiveDamige: 1
+  _DamigeGiven: 25

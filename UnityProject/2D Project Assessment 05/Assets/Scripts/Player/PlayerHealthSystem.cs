@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerHealthSystem : MonoBehaviour
 {
@@ -23,8 +25,15 @@ public class PlayerHealthSystem : MonoBehaviour
 
         if(_HealthAmount <= 0)
         {
-            _YouAreDead = true;
+            PlayerDied();
         }
+    }
+
+    public void PlayerDied()
+    {
+        _YouAreDead = true;
+        SceneManager.LoadScene("Death");
+
     }
 
     public void AddHealth(int AddAmount)

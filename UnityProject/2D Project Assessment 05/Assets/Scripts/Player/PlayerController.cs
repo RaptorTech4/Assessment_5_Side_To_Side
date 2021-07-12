@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     //jump
     [SerializeField] private float _JumpForce;
     [SerializeField] private LayerMask _GroundLayer;
-    //[HideInInspector]
+    [HideInInspector]
     public int _ExtraJumps;
     public int _ExtraJumpsValue;
+    //DropDownPlatform
+    private GameObject DropDownPatformGO;
 
     private void Awake()
     {
@@ -36,9 +38,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _PlayerInput.Player.Jump.performed += _ => JumpPlayer();
+        _PlayerInput.Player.Crouch.performed += _ => DropDownPlatform();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //movement
         float movement = _PlayerInput.Player.Movement.ReadValue<float>();
@@ -60,20 +63,39 @@ public class PlayerController : MonoBehaviour
         {
             _ExtraJumps = _ExtraJumpsValue;
         }
+
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "OneWayPlatform")
+        {
+            DropDownPatformGO = collision.gameObject;
+        }
+    }
+
+    private void DropDownPlatform()
+    {
+
+        if (DropDownPatformGO != null)
+        {
+            VerticalPlatform VP = DropDownPatformGO.GetComponent<VerticalPlatform>();
+            if (VP != null)
+            {
+                VP.ChangeLayers();
+                DropDownPatformGO = null;
+            }
+        }
     }
 
     void JumpPlayer()
     {
-
-
         if (_ExtraJumps > 0)
         {
-            _RB.AddForce(new Vector2(0, _JumpForce), ForceMode2D.Impulse);
-
             _ExtraJumps--;
+            _RB.AddForce(new Vector2(0, _JumpForce), ForceMode2D.Impulse);
         }
-
-
     }
 
     private bool _IsGrounded()
@@ -97,5 +119,14 @@ public class PlayerController : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    public void AddJumpForce(float AddForce)
+    {
+        _JumpForce = _JumpForce + AddForce;
+    }
+    public void AddMoveForce(float AddForce)
+    {
+        _Speed = _Speed + AddForce;
     }
 }
