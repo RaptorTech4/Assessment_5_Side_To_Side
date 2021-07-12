@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8790174741650039664}
   - component: {fileID: 8790174741650039665}
   - component: {fileID: 2940788361415705533}
+  - component: {fileID: 1011007460}
   m_Layer: 0
   m_Name: PatrolAI
   m_TagString: Untagged
@@ -171,3 +172,24 @@ MonoBehaviour:
   _InstendDeath: 0
   _GiveDamige: 1
   _DamigeGiven: 25
+--- !u!50 &1011007460
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790174741650039667}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
