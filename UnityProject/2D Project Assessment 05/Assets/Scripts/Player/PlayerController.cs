@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     //jump
     [SerializeField] private float _JumpForce;
     [SerializeField] private LayerMask _GroundLayer;
+    [SerializeField] private GameObject GroundedGameObject;
     [HideInInspector]
     public int _ExtraJumps;
     public int _ExtraJumpsValue;
@@ -46,11 +47,11 @@ public class PlayerController : MonoBehaviour
         //movement
         float movement = _PlayerInput.Player.Movement.ReadValue<float>();
 
-        if (_FacingRight == true && movement < 0)
+        if (_FacingRight == false && movement < 0)
         {
             Flip();
         }
-        else if (_FacingRight == false && movement > 0)
+        else if (_FacingRight == true && movement > 0)
         {
             Flip();
         }
@@ -100,11 +101,11 @@ public class PlayerController : MonoBehaviour
 
     private bool _IsGrounded()
     {
-        Vector2 topLeftPoint = transform.position;
+        Vector2 topLeftPoint = GroundedGameObject.transform.position;
         topLeftPoint.x -= _Col.bounds.extents.x;
         topLeftPoint.y += _Col.bounds.extents.y;
 
-        Vector2 bottomRightPoint = transform.position;
+        Vector2 bottomRightPoint = GroundedGameObject.transform.position;
         bottomRightPoint.x += _Col.bounds.extents.x;
         bottomRightPoint.y -= _Col.bounds.extents.y;
 
