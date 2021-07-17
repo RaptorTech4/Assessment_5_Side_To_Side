@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions _PlayerInput;
     private Rigidbody2D _RB;
     private Collider2D _Col;
+    Animator anim;
     //Movement
     [SerializeField] private float _Speed;
     private bool _FacingRight;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public int _ExtraJumps;
     public int _ExtraJumpsValue;
+    //Attack
+
     //DropDownPlatform
     private GameObject DropDownPatformGO;
 
@@ -40,12 +43,16 @@ public class PlayerController : MonoBehaviour
     {
         _PlayerInput.Player.Jump.performed += _ => JumpPlayer();
         _PlayerInput.Player.Crouch.performed += _ => DropDownPlatform();
+        _PlayerInput.Player.Attack.performed += _ => PlayerAttack();
+
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         //movement
         float movement = _PlayerInput.Player.Movement.ReadValue<float>();
+        float movementRR = Mathf.Clamp01(Mathf.Abs(movement));
 
         if (_FacingRight == false && movement < 0)
         {
@@ -62,9 +69,13 @@ public class PlayerController : MonoBehaviour
 
         if (_IsGrounded())
         {
+            anim.SetFloat("Movement", movementRR);
             _ExtraJumps = _ExtraJumpsValue;
         }
-
+        else
+        {
+            anim.SetFloat("Movement", 0.0f);
+        }
     }
 
 
@@ -97,6 +108,7 @@ public class PlayerController : MonoBehaviour
             _ExtraJumps--;
             _RB.AddForce(new Vector2(0, _JumpForce), ForceMode2D.Impulse);
         }
+
     }
 
     private bool _IsGrounded()
@@ -120,6 +132,11 @@ public class PlayerController : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    void PlayerAttack()
+    {
+
     }
 
     public void AddJumpForce(float AddForce)
