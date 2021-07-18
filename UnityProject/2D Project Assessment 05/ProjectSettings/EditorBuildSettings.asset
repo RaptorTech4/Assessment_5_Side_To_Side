@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Death.unity
-    guid: 0a8b1fa1b267a30448425af81838f1ef
+    path: Assets/Scenes/Boss.unity
+    guid: ad72f000c6d3fed45a371cc4a9419dae
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 565c974d8080c4e4486cbe1fde401c3b, type: 2}

@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 6581937783026762101}
   - component: {fileID: 5062206396403735941}
   - component: {fileID: 75862691042439497}
-  m_Layer: 0
+  - component: {fileID: 1316047883503661789}
+  - component: {fileID: 4154867727315513545}
+  m_Layer: 7
   m_Name: Enemy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,9 +79,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 27080773
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 62bd087623df09e48a095d697813d088, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -149,8 +151,8 @@ MonoBehaviour:
   - {fileID: 3440799078330176318}
   - {fileID: 4574948669048736289}
   m_Bounds:
-    m_Center: {x: -0.023994893, y: 0.40567753, z: 0}
-    m_Extent: {x: 0.35087, y: 0.4547914, z: 0}
+    m_Center: {x: -0.023995847, y: 0.4056777, z: 0}
+    m_Extent: {x: 0.35087097, y: 0.45479128, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5062206396403735941
@@ -186,6 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 3.2
   _GroundDetection: {fileID: 6140524914304169334}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   _RayDis: 2.5
   _DirectionTimerMin: 0.5
   _DirectionTimerMax: 3.5
@@ -194,14 +199,51 @@ MonoBehaviour:
   _AttackTimerMin: 0.5
   _AttackTimerMax: 1.2
   _PlayerCheckPos: {fileID: 6958356432753371054}
-  _PlayerRayDis: 2.5
+  _PlayerRayDis: 1
   _PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
   _AttackPos: {fileID: 7618809861380785533}
-  _AttackRange: 1.5
+  _AttackRange: 0.5
   _AttackDamigeAmount: 10
   _CanAttack: 1
+--- !u!114 &1316047883503661789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266195339297372810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d382ca3dd16083b4494984adc2fc22eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HealthAmount: 50
+  _YouAreDead: 0
+--- !u!114 &4154867727315513545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266195339297372810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a048b3a49f7159849b4241853d634efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GaineHealth: {fileID: 8566986705805425843, guid: ff8db94e02e80664f911aeeee806e75f, type: 3}
+  _GaineMaxHealth: {fileID: 3056128820404612223, guid: 73730293e2204954998bc0c10cdd6eb8, type: 3}
+  _FullHealth: {fileID: 96235959295174649, guid: a568c8516e32da74c9ee2c50d7ed8234, type: 3}
+  _RanomMax: 300
+  _RandomValu: 0
+  _GaineHealthMax: 100
+  _GaineHealthMin: 50
+  _GaineMaxHealthMax: 200
+  _GaineMaxHealthMin: 150
+  _FullHealthMax: 300
+  _FullHealthMin: 280
 --- !u!1 &1352075125430846837
 GameObject:
   m_ObjectHideFlags: 0

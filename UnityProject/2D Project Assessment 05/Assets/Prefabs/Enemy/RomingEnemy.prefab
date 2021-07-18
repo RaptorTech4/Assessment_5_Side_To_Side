@@ -13,14 +13,16 @@ GameObject:
   - component: {fileID: 6225475940448076595}
   - component: {fileID: 8620669580391300211}
   - component: {fileID: 2784278981002728841}
-  - component: {fileID: 6705775679520377978}
-  m_Layer: 0
+  - component: {fileID: 3578294828838263629}
+  - component: {fileID: 4357815727304574696}
+  - component: {fileID: 4757016320402908637}
+  m_Layer: 7
   m_Name: RomingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2360820335265862031
 Transform:
   m_ObjectHideFlags: 0
@@ -153,7 +155,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6705775679520377978
+--- !u!114 &3578294828838263629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,27 +164,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 4676221889966263934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c908a70700d62c6428d27e68d4d3612f, type: 3}
+  m_Script: {fileID: 11500000, guid: 049316db1fffda746af4bc33a9e12ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 3.5
+  _Speed: 2
   _GroundDetection: {fileID: 2310329212774453130}
-  _RayDis: 2.5
-  _DirectionTimerMin: 0.5
-  _DirectionTimerMax: 3.5
-  _StandTimerMin: 0.5
-  _StandTimerMax: 3.5
-  _AttackTimerMin: 0.5
-  _AttackTimerMax: 1.2
-  _PlayerCheckPos: {fileID: 0}
-  _PlayerRayDis: 2.5
-  _PlayerLayer:
+  _GroundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _AttackPos: {fileID: 0}
-  _AttackRange: 1.5
-  _AttackDamigeAmount: 0
-  _CanAttack: 1
+    m_Bits: 256
+--- !u!114 &4357815727304574696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676221889966263934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0645f3501ef704d9e99c26846ab821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _InstendDeath: 0
+  _GiveDamige: 1
+  _DamigeGiven: 20
+--- !u!114 &4757016320402908637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676221889966263934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d382ca3dd16083b4494984adc2fc22eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HealthAmount: 75
+  _YouAreDead: 0
 --- !u!1 &5200862212540555122
 GameObject:
   m_ObjectHideFlags: 0

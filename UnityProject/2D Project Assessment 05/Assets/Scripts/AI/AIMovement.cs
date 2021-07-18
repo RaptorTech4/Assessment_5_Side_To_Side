@@ -5,6 +5,7 @@ public class AIMovement : MonoBehaviour
     [Header("Movement")]
     public float _Speed = 3.2f;
     public Transform _GroundDetection;
+    public LayerMask GroundLayer;
     bool _MovingRight = true;
     bool _Moving = true;
     public float _RayDis = 2.5f;
@@ -41,39 +42,49 @@ public class AIMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    EnemyHealth Health;
+    bool died;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        Health = GetComponent<EnemyHealth>();
         _XScale = transform.localScale.x;
         _AttackCurrentTimer -= Random.Range(_AttackTimerMin, _AttackTimerMax);
     }
 
     private void Update()
     {
-        Movement();
-
-        PlayerCheck();
-
-        if (_FoundPlayer)
-        {
-            Attack();
-        }
-        else
+        died = Health._YouAreDead;
+        if (!died)
         {
 
-            RaycastHit2D groundInfo = Physics2D.Raycast(_GroundDetection.position, Vector2.down, _RayDis);
+            Movement();
 
-            if (groundInfo.collider == false)
+            PlayerCheck();
+
+            if (_FoundPlayer)
             {
-                _MovingRight = !_MovingRight;
+                Attack();
             }
-            SetUpTimers();
-            Flip();
+            else
+            {
+
+                RaycastHit2D groundInfo = Physics2D.Raycast(_GroundDetection.position, Vector2.down, _RayDis, GroundLayer);
+
+                if (groundInfo.collider == false)
+                {
+                    _MovingRight = !_MovingRight;
+                }
+                SetUpTimers();
+                Flip();
+            }
+        }else
+        {
+            anim.SetTrigger("Die");
+            Destroy(gameObject, 0.4f);
         }
-
-
     }
 
     void SetUpTimers()
@@ -159,7 +170,7 @@ public class AIMovement : MonoBehaviour
                 isRight = false;
             }
 
-            if ( isRight)
+            if (isRight)
                 _FoundPlayer = true;
             if (!isRight)
                 _FoundPlayer = false;
@@ -210,7 +221,12 @@ public class AIMovement : MonoBehaviour
                     enemy.GetComponent<PlayerHealthSystem>().RemoveHealth(_AttackDamigeAmount);
                 }
                 _AttackCurrentTimer -= Random.Range(_AttackTimerMin, _AttackTimerMax);
+                Invoke("ResetAttack", 1.0f);
             }
         }
+    }
+    void ResetAttack()
+    {
+        _CanAttack = true;
     }
 }

@@ -8,12 +8,20 @@ public class InGameUI : MonoBehaviour
     public bool _PauseMenuActev = false;
     public Canvas InGameCanvas;
     public Canvas _PauseMenuCanvas;
+    public Canvas _DeathCanvas;
+
+    PlayerHealthSystem _Player;
+    bool _PlayerDied;
 
     void Start()
     {
         _PauseMenuActev = false;
         _PauseMenuCanvas.enabled = false;
+        _DeathCanvas.enabled = false;
         InGameCanvas.enabled = true;
+
+        Time.timeScale = 1;
+        _Player = FindObjectOfType<PlayerHealthSystem>();
     }
 
     void Update()
@@ -22,6 +30,17 @@ public class InGameUI : MonoBehaviour
         {
             pauseTheGame();
         }
+
+        _PlayerDied = _Player._YouAreDead;
+        if(_PlayerDied)
+        {
+            _PauseMenuActev = false;
+            _PauseMenuCanvas.enabled = false;
+            _DeathCanvas.enabled = true;
+            InGameCanvas.enabled = false;
+            Time.timeScale = 0;
+        }
+
     }
 
     public void pauseTheGame()
@@ -43,6 +62,11 @@ public class InGameUI : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void TryAgain()
+    {
+        SceneManager.LoadScene("MainLevel");
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -52,4 +76,6 @@ public class InGameUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+
 }

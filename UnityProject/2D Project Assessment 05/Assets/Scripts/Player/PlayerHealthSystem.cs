@@ -32,8 +32,6 @@ public class PlayerHealthSystem : MonoBehaviour
     public void PlayerDied()
     {
         _YouAreDead = true;
-        SceneManager.LoadScene("Death");
-
     }
 
     public void AddHealth(int AddAmount)

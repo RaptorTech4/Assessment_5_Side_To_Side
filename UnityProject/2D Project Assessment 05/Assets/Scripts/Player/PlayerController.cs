@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _RB;
     private Collider2D _Col;
     Animator anim;
+
     //Movement
     [SerializeField] private float _Speed;
     private bool _FacingRight;
+
     //jump
     [SerializeField] private float _JumpForce;
     [SerializeField] private LayerMask _GroundLayer;
@@ -17,7 +19,16 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public int _ExtraJumps;
     public int _ExtraJumpsValue;
+
     //Attack
+    public float _AttackRange = 1.0f;
+    public LayerMask _EnemyLayers;
+    public Transform _AttackPoint;
+    public float _AttackTime = 0.5f;
+    public float _AttackCurrentTime;
+    public int _AttackDamigeAmount;
+    bool _CanAttack;
+    bool _Attacking;
 
     //DropDownPlatform
     private GameObject DropDownPatformGO;
@@ -62,19 +73,36 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
-
-        Vector3 currentPosition = transform.position;
-        currentPosition.x += movement * _Speed * Time.deltaTime;
-        transform.position = currentPosition;
-
-        if (_IsGrounded())
+        if (_CanAttack)
         {
-            anim.SetFloat("Movement", movementRR);
-            _ExtraJumps = _ExtraJumpsValue;
+
+            Vector3 currentPosition = transform.position;
+            currentPosition.x += movement * _Speed * Time.deltaTime;
+            transform.position = currentPosition;
+
+            if (_IsGrounded())
+            {
+                anim.SetFloat("Movement", movementRR);
+                _ExtraJumps = _ExtraJumpsValue;
+            }
+            else
+            {
+                anim.SetFloat("Movement", 0.0f);
+            }
         }
         else
         {
             anim.SetFloat("Movement", 0.0f);
+        }
+
+        if (_AttackCurrentTime > 0.0f)
+        {
+            _AttackCurrentTime -= Time.deltaTime;
+        }
+        else
+        {
+            _AttackCurrentTime = 0.0f;
+            _CanAttack = true;
         }
     }
 
@@ -136,7 +164,22 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
+        if (_CanAttack)
+        {
+            anim.SetTrigger("Attack");
 
+            Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(_AttackPoint.position, _AttackRange, _EnemyLayers);
+
+            _AttackCurrentTime = _AttackTime;
+            _CanAttack = false;
+
+            foreach (Collider2D enemy in hitEnemy)
+            {
+                enemy.GetComponent<EnemyHealth>().RemoveHealth(_AttackDamigeAmount);
+            }
+        }
+
+        
     }
 
     public void AddJumpForce(float AddForce)
