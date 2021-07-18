@@ -38,6 +38,7 @@ public class AIMovement : MonoBehaviour
     public Transform _AttackPos;
     public float _AttackRange = 1.5f;
     public int _AttackDamigeAmount;
+    public float _ResetAttackTime = 1.0f;
     [HideInInspector] public bool _CanAttack = true;
 
     Rigidbody2D rb;
@@ -221,7 +222,7 @@ public class AIMovement : MonoBehaviour
                     enemy.GetComponent<PlayerHealthSystem>().RemoveHealth(_AttackDamigeAmount);
                 }
                 _AttackCurrentTimer -= Random.Range(_AttackTimerMin, _AttackTimerMax);
-                Invoke("ResetAttack", 1.0f);
+                Invoke("ResetAttack", _ResetAttackTime);
             }
         }
     }

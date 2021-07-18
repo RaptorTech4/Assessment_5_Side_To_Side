@@ -11,19 +11,24 @@ public class PlayerHealthSystem : MonoBehaviour
     public bool _YouAreDead;
 
     public int _HealthFullAmount;
-
+    GameObject objs;
 
     private void Start()
     {
-        _HealthAmount = _HealthFullAmount;
+
+        objs = GameObject.FindGameObjectWithTag("HealthDeta");
+
+        _HealthAmount = objs.GetComponent<HealthBetweenScene>().PlayerHealth;
+        _HealthFullAmount = objs.GetComponent<HealthBetweenScene>().PlayerMaxHealth;
+
         _YouAreDead = false;
     }
 
     public void RemoveHealth(int RemoveAmount)
     {
         _HealthAmount = _HealthAmount - RemoveAmount;
-
-        if(_HealthAmount <= 0)
+        objs.GetComponent<HealthBetweenScene>().PlayerHealth = _HealthAmount;
+        if (_HealthAmount <= 0)
         {
             PlayerDied();
         }
@@ -42,11 +47,19 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             _HealthAmount = _HealthFullAmount;
         }
+        objs.GetComponent<HealthBetweenScene>().PlayerHealth = _HealthAmount;
     }
 
     public void AddHealthFullAmount(int AddAmount)
     {
         _HealthFullAmount = _HealthFullAmount + AddAmount;
+        objs.GetComponent<HealthBetweenScene>().PlayerMaxHealth = _HealthFullAmount;
 
+    }
+
+    public void FullUpHealth()
+    {
+        _HealthAmount = _HealthFullAmount;
+        objs.GetComponent<HealthBetweenScene>().PlayerHealth = _HealthAmount;
     }
 }

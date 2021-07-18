@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3578294828838263629}
   - component: {fileID: 4357815727304574696}
   - component: {fileID: 4757016320402908637}
+  - component: {fileID: 8555149562689032698}
   m_Layer: 7
   m_Name: RomingEnemy
   m_TagString: Untagged
@@ -201,6 +202,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HealthAmount: 75
   _YouAreDead: 0
+--- !u!114 &8555149562689032698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676221889966263934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a048b3a49f7159849b4241853d634efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GaineHealth: {fileID: 8566986705805425843, guid: ff8db94e02e80664f911aeeee806e75f, type: 3}
+  _GaineMaxHealth: {fileID: 3056128820404612223, guid: 73730293e2204954998bc0c10cdd6eb8, type: 3}
+  _FullHealth: {fileID: 96235959295174649, guid: a568c8516e32da74c9ee2c50d7ed8234, type: 3}
+  _RanomMax: 300
+  _RandomValu: 0
+  _GaineHealthMax: 100
+  _GaineHealthMin: 50
+  _GaineMaxHealthMax: 200
+  _GaineMaxHealthMin: 150
+  _FullHealthMax: 300
+  _FullHealthMin: 250
 --- !u!1 &5200862212540555122
 GameObject:
   m_ObjectHideFlags: 0

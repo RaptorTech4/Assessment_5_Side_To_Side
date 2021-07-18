@@ -20,18 +20,18 @@ public class RandomSpawn : MonoBehaviour
 
         _RandomValu = Random.Range(0, _RanomMax);
 
-        if(_RandomValu> _GaineHealthMax && _RandomValu < _GaineHealthMin)
+        if(_RandomValu < _GaineHealthMax && _RandomValu > _GaineHealthMin)
         {
             Instantiate(_GaineHealth, transform.position, transform.rotation);
         }
 
-        if (_RandomValu > _GaineMaxHealthMax && _RandomValu < _GaineMaxHealthMin)
+        if (_RandomValu < _GaineMaxHealthMax && _RandomValu > _GaineMaxHealthMin)
         {
             Instantiate(_GaineMaxHealth, transform.position, transform.rotation);
 
         }
 
-        if (_RandomValu > _FullHealthMax && _RandomValu < _FullHealthMin)
+        if (_RandomValu < _FullHealthMax && _RandomValu > _FullHealthMin)
         {
             Instantiate(_FullHealth, transform.position, transform.rotation);
 

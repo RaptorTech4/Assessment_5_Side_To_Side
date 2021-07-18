@@ -183,8 +183,8 @@ MonoBehaviour:
   - {fileID: 8664821059228480493}
   - {fileID: 5536115289670355851}
   m_Bounds:
-    m_Center: {x: 0.18571466, y: -0.18258834, z: 0}
-    m_Extent: {x: 0.5737511, y: 0.5408777, z: 0}
+    m_Center: {x: 0.1857149, y: -0.1825884, z: 0}
+    m_Extent: {x: 0.57375157, y: 0.5408777, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &1868153261891834319
@@ -214,7 +214,7 @@ MonoBehaviour:
   _AttackPoint: {fileID: 5669536347544924684}
   _AttackTime: 0.5
   _AttackCurrentTime: 0
-  _AttackDamigeAmount: 0
+  _AttackDamigeAmount: 25
 --- !u!114 &5985543314380946935
 MonoBehaviour:
   m_ObjectHideFlags: 0

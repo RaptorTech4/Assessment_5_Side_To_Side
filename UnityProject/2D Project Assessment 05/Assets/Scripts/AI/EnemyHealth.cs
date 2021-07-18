@@ -7,11 +7,14 @@ public class EnemyHealth : MonoBehaviour
 
     public int _HealthAmount;
     public bool _YouAreDead;
+    public bool _Boss = false;
+    RandomSpawn RS;
 
 
     private void Start()
     {
         _YouAreDead = false;
+        RS = GetComponent<RandomSpawn>();
     }
 
     public void RemoveHealth(int RemoveAmount)
@@ -26,6 +29,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDied()
     {
+        if(!_Boss)
+        {
+            RS.SpawnRandomHealth();
+        }
+        else
+        {
+            FindObjectOfType<WinTheGame>().YouWin();
+        }
+
         _YouAreDead = true;
     }
 
